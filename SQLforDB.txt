@@ -1,0 +1,37 @@
+/////// store
+
+INSERT INTO Store ( StoreName, Location, PhoneNo)
+VALUES 
+('JeanStorePune', 'Pune', '1234567890'),
+('JeanSToreBanglore', 'Banglore', '9876543210');
+
+
+////////// Employee
+INSERT INTO Employee ( EmpName, EmpEmail, EmpPhoneNo, EmpUserName, EmpPwd, StoreId)
+VALUES 
+('Prathamesh', 'prathamesh@example.com', '1234567890', 'prathamesh', 'prathamesh', 1),
+('Saurabh', 'saurabh@example.com', '9876543210', 'saurabh', 'saurabh', 2);
+
+
+//////// Customer
+INSERT INTO Customer ( CustName, Address, PhoneNo, Email, UserName, Pwd)
+VALUES 
+('sakshi', 'pune', '1234567890', 'sakshi@example.com', 'sakshi', 'sakshi'),
+('saomya', 'pune', '9876543210', 'saomya@example.com', 'saomya', 'saomya'),
+('sadiya', 'pune', '5345590558', 'sadiya@example.com', 'sadiya', 'sadiya');
+
+
+
+///////Item
+INSERT INTO Item (ItemCode, ItemName, Price, Quantity, StoreId, item_image)
+VALUES 
+('ITM01', 'Blue Denim Jeans', 639, 50, 1, 'https://rukminim2.flixcart.com/image/612/612/xif0q/jean/5/h/f/28-united191-united-denim-original-imahyp8wa36zbryz.jpeg?q=70'),
+('ITM02', 'Black Leather Jacket', 1750, 20, 1, 'https://rukminim2.flixcart.com/image/612/612/xif0q/jacket/p/u/r/s-no-leather-j-desireshub-original-imaguc8dqrtpd9cf.jpeg?q=70'),
+('ITM03', 'Red Cotton TShirt', 289, 100, 1, 'https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/t/e/h/xl-9080-lggarments-original-imagzng9qk4ek3gg.jpeg?q=70'),
+('ITM04', 'White Tshirt', 220, 30, 1, 'https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/c/g/n/m-bw-hs-rn-white-being-wanted-original-imagk5kchhuxavg4.jpeg?q=70'),
+('ITM05', 'Grey Hoodie', 799, 40, 1, 'https://rukminim2.flixcart.com/image/612/612/xif0q/sweatshirt/f/k/p/3xl-aw23-ms10-grey-alan-jones-original-imaguzgkjmuruze9.jpeg?q=70'),
+('ITM06', 'Blue Checked Shirt', 1117, 60, 1, 'https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/k/5/s/xl-23a5bs08u008i901-united-colors-of-benetton-original-imagsjm6udp73c8w.jpeg?q=70'),
+('ITM07', 'Black Skinny Jeans', 800, 70, 1, 'https://rukminim2.flixcart.com/image/612/612/xif0q/jean/k/d/u/32-udjeno1351-u-s-polo-assn-denim-co-original-imagyhjyh4zj7eyy.jpeg?q=70'),
+('ITM08', 'Brown Leather Jacket', 1799, 15, 1, 'https://rukminim2.flixcart.com/image/612/612/jdvziq80/jacket/h/j/v/xxl-gnd1-garmadian-original-imaf2zyxgmq5f5rg.jpeg?q=70'),
+('ITM09', 'White Polo Shirt', 1218, 80, 1, 'https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/k/k/h/m-usshto2747-u-s-polo-assn-original-imahfa6z2mzsuh9m.jpeg?q=70'),
+('ITM10', 'Green Cargo Pants', 699, 25, 1, 'https://rukminim2.flixcart.com/image/612/612/xif0q/cargo/v/w/g/-original-imah2z45xybupgz9.jpeg?q=70');

@@ -1,0 +1,17 @@
+CREATE TRIGGER create_order
+ON orders
+INSTEAD OF INSERT
+AS
+BEGIN
+    DECLARE @ordid INT;
+    DECLARE @custId INT;
+    DECLARE @amount FLOAT;
+    SELECT @custId = custId FROM inserted;
+    SELECT @ordid = ISNULL(MAX(orderId), 0) + 1 FROM orders;
+    SELECT @amount = SUM(value) FROM Cart WHERE custId = @custId;
+    INSERT INTO orders (orderId, custId, orderDate, amount, itemCode, qty, price)
+    SELECT @ordid, @custId, GETDATE(), @amount, itemCode, qty, price
+    FROM Cart
+    WHERE custId = @custId;
+    DELETE FROM Cart WHERE custId = @custId;
+END;

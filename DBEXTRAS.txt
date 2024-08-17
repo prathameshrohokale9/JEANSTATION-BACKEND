@@ -1,0 +1,60 @@
+Database name as JeanStation
+
+personal ---    localhost\SQLEXPRESS
+
+vm  -----       WIN2K22-VM\SQLEXPRESS
+
+            // Add database
+            var ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+            builder.Services.AddDbContext<JeanStationContext>(options =>
+            options.UseSqlServer(ConnectionString));
+
+            // Add CORS support
+            app.UseCors(options =>
+            {
+                options.AllowAnyHeader();
+                options.AllowAnyMethod();
+                options.AllowAnyOrigin();
+            });
+
+
+
+Table and there properties
+
+Scaffold-DbContext 'Data Source=localhost\SQLEXPRESS;Initial Catalog=JeanStation;integrated security=true;trustservercertificate=true;' Microsoft.EntityFrameworkCore.SqlServer -Output Models
+
+1.Table Item:- itemCode char(5) primary key, item Name varchar(40) not null, price double not null, quantity int, storeld as foreign key from Store table, item_image as string
+
+
+2.Table Store:- storeld int primary key identity(1,1), storeName varchar(40) not null, location varchar(40) not null, phoneNo char(10) not null
+
+3. Table Customer:- custld int primary key identity(1000,1), custName varchar(40) not null, address varchar(50) not null, phoneNo char(10) not null, email varchar(255) not null, userName varchar(40) unique not null, pwd char(6) not null
+
+4. Table Order:- orderld int primary key identity(1,1), custld as foreign key from customer, status varchar(40) default 'order placed', orderDate datetime default datetime.now(), amount double (calculation reqd))
+
+5. Table Items_Order-itemCode, itemName, price, orderld (both as primary key)
+
+6. Table Cart:- cartld int primary key identity(1,1), custld foreignkey from customer
+
+7.Table Items_Cart: - cartld, itemCode, quantity, (cartld, itemCode) as primary key
+
+
+
+
+
+api/Items
+
+get working
+
+post working
+{
+  "itemCode": "I1234",
+  "itemName": "Blue Jeans",
+  "price": 49.99,
+  "quantity": 100,
+  "itemImage": "http://example.com/images/blue_jeans.jpg"
+}
+
+
+put not allowed
+

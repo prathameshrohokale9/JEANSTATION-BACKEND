@@ -1,0 +1,58 @@
+CREATE TABLE Store (
+    storeId INT PRIMARY KEY IDENTITY(1,1),
+    storeName VARCHAR(40) NOT NULL,
+    location VARCHAR(40) NOT NULL,
+    phoneNo CHAR(10) NOT NULL
+);
+
+CREATE TABLE Item (
+    itemCode CHAR(5) PRIMARY KEY,
+    itemName VARCHAR(40) NOT NULL,
+    price FLOAT NOT NULL,
+    quantity INT,
+    storeId INT,
+    item_image VARCHAR(255),
+);
+
+CREATE TABLE Customer (
+    custId INT PRIMARY KEY IDENTITY(1000,1),
+    custName VARCHAR(40) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    phoneNo CHAR(10) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    userName VARCHAR(40) UNIQUE NOT NULL,
+    pwd VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE Employee (
+    empId INT PRIMARY KEY IDENTITY(1,1),
+    empName VARCHAR(40) NOT NULL,
+    empEmail VARCHAR(255) NOT NULL,
+    empPhoneNo CHAR(10) NOT NULL,
+    empUserName VARCHAR(40) UNIQUE NOT NULL,
+    empPwd VARCHAR(20) NOT NULL,
+    storeId INT
+);
+
+
+CREATE TABLE orders (
+    orderId INT NOT NULL, 
+    custId INT,
+    orderStatus VARCHAR(40) DEFAULT 'order placed',
+    orderDate DATETIME DEFAULT GETDATE(),
+    amount FLOAT,
+	itemCode CHAR(5) NOT NULL,
+	qty INT,
+    price FLOAT,
+    itemValue AS (qty * price) PERSISTED,
+    PRIMARY KEY (orderId, itemCode) 
+);
+
+CREATE TABLE Cart (
+custId INT,
+itemCode CHAR(5),
+price FLOAT,
+qty INT,
+value AS (qty * price) PERSISTED,
+PRIMARY KEY (custId,itemCode),
+);
